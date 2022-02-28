@@ -1,6 +1,7 @@
-/// CONSTANTS////
+
 // #include<iostream>
 // using namespace std;
+// // /the program will throw an error because const value  can not be changed
 // int main(){
 //     const int a = 10;
 //     cout<<"the value of a : "<<a<<endl;
@@ -9,7 +10,6 @@
 
 //     return 0;
 // }
-///the above program will throw an error because const value  can not be changed
 // #include<iostream>
 // #include<iomanip>
 // using namespace std;
@@ -24,10 +24,14 @@
 
 //     return 0;
 // }
-//setw is a part of iomanip library it just like using tab metgod setw will insert a tab it will take a desired integer value of your choice
+// "setw()" is a part of <iomanip> library it just like using a  tab , setw() will insert a tab it will take a desired integer value of your choice
 
 
-////multiplicatin table of any desired number:
+
+
+
+
+//multiplicatin table of any desired number:
 // #include<iostream>
 // using namespace std;
 // int main(){
@@ -44,6 +48,12 @@
 //     return 0;
 // }
 
+
+
+
+
+
+//Code below is the way to implement insertion sort on al inked using a vector
 // ListNode* curr=head;
 //         vector<int>v;
 //         ListNode* temp=head;
