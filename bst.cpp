@@ -29,6 +29,9 @@ bstnode::bstnode(){
 bstnode *bstnode :: insert(bstnode *root, int val)
 {
     bstnode *newnode = new bstnode(val);
+
+    // the method below is inserting using pointers curr , prev.
+    // in order to imply this code you have to modify the whole code .
     // bstnode* curr = root;
     // bstnode* prev = NULL;
 
