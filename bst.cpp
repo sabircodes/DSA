@@ -15,8 +15,11 @@ public:
         right = NULL;
 
     }
+    
     bstnode*insert(bstnode *root, int val);
 };
+
+
 
 bstnode::bstnode(){
     data=0;
@@ -57,10 +60,12 @@ bstnode *bstnode :: insert(bstnode *root, int val)
     }
     else if (val > root->data)
     {
+       
         root->right = insert(root->right, val);
     }
     else
     {
+        
         root->left = insert(root->left, val);
     }
     return root;
@@ -70,7 +75,7 @@ bool search(bstnode *root, int val)
 {
     if (root == NULL)
     {
-        // cout<<"The tree is empty!"<<endl;
+        
         return false;
     }
     else if (val == root->data)
@@ -80,6 +85,7 @@ bool search(bstnode *root, int val)
     }
     else if (root->data >= val)
     {
+        
         return search(root->left, val);
     }
     else
