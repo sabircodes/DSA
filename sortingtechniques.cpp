@@ -202,6 +202,7 @@ void swap(int &a, int &b)
     b = temp;
 }
 
+//the partition function 
 int partition(int arr[], int start, int end)
 {
     int pivot = arr[end];
