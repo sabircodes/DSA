@@ -1,0 +1,58 @@
+class Solution{
+    int minEle ;
+    stack<int> s;
+    stack<int>mins; // this  stack will have only the minimum element from the first stack 
+    public:
+    
+       /*returns min element from stack*/
+       int getMin(){
+           if(s.empty()){
+               return -1;
+           }
+           return minEle;
+           
+          
+       }
+       
+       /*returns poped element from stack*/
+       int pop(){
+           if(s.empty()){
+               return -1;
+           }
+           
+           int no = s.top(); // no stores the value of top element from s 
+           s.pop(); 
+            
+           
+            if(no == mins.top()){  //if no is equal to the mins top element this measn no is the minmum elment.
+               mins.pop();
+           }
+           if(!mins.empty()){
+               minEle = mins.top(); // the top most element is the minimum elemnt .
+           }
+           
+           return no;
+           
+       }
+       
+       /*push element x into the stack*/
+       void push(int x){
+          if(s.empty()){
+              s.push(x);  // push the number in both the  satcks
+              mins.push(x);
+              minEle = x;
+              
+          }
+          
+          else{
+              s.push(x);
+              if(x<=mins.top()){ // the ele will onyl be inserted in the min stack  , only if it is smaller than  the mins previous elment
+                  mins.push(x);
+                  
+              }
+              minEle = mins.top();
+          }
+           
+           
+       }
+};
