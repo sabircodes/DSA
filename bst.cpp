@@ -96,6 +96,33 @@ bool search(bstnode *root, int val)
         return search(root->right, val);
     }
 }
+
+void findmin(bstnode *root){
+    if(root == NULL) {
+        cout<<"Thwe tree is empty!"<<endl;
+    }
+    while(root->left!=NULL){
+        root=root->left;
+    }
+    cout<<"The mininmun element in the tree is : "<<root->data<<endl;
+    
+}
+void findmax(bstnode *root){
+    if(root == NULL) {
+        cout<<"Thwe tree is empty!"<<endl;
+    }
+    while(root->right!=NULL){
+        root=root->right;
+    }
+    cout<<"The maximum element in the tree is : "<<root->data<< endl;
+    
+}
+
+
+
+
+
+
 void inorder(bstnode *root)
 {
     if (!root)
@@ -112,19 +139,27 @@ int main()
     bstnode node,*root = NULL;
     root = node.insert(root, 15);
     node.insert(root, 12);
-    node.insert(root, 1);
-    node.insert(root, 5);
-    node.insert(root, 16);
-    inorder(root);
+    node.insert(root, 1);                                      ///  15    ////
+    node.insert(root, 5);                                // 5 , 12//       //16//
+    node.insert(root, 16);                          // 2//     // 3 //         //21//
+    node.insert(root,3);                         //1//       
+    node.insert(root,2);
+    node.insert(root,21);
 
-    int n;
-    cout << "enter the number you are looking for : " << endl;
-    cin >> n;
-    if (search(root, n) == true)
-        cout << "found " << n << endl;
-    else
-    {
-        cout << "error";
-    }
+    inorder(root);
+    findmin(root);
+    findmax(root);
+    cout<<endl;
+    cout<<"The root element is "<<root->data<<endl;
+
+    // int n;
+    // cout << "enter the number you are looking for : " << endl;
+    // cin >> n;
+    // if (search(root, n) == true)
+    //     cout << "found " << n << endl;
+    // else
+    // {
+    //     cout << "error";
+    // }
     return 0;
 }
