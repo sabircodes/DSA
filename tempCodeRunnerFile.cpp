@@ -1,3 +1,6 @@
-cout << "reverse: " << endl;
-    // reverse(head);
-    // display(head);
+bool mypair(char opening , char close){
+    if(opening=='(' && close==')') return true;
+    else if(opening=='{' && close=='}') return true;
+    else if(opening=='[' && close==']') return true;
+    return false;
+}
