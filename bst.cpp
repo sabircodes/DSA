@@ -1,4 +1,5 @@
 #include <iostream>
+#include<queue>
 using namespace std;
 
 class bstnode
@@ -6,6 +7,7 @@ class bstnode
 public:
     bstnode();
     int data;
+    // char data;
     bstnode *left;
     bstnode *right;
     bstnode(int val)
@@ -98,7 +100,7 @@ void findmin(bstnode *root)
 {
     if (root == NULL)
     {
-        cout << "Thwe tree is empty!" << endl;
+        cout << "The tree is empty!" << endl;
     }
     while (root->left != NULL)
     {
@@ -135,6 +137,27 @@ int findheights(bstnode *root){
 
 }
 
+void levelordertraversal(bstnode *root){
+    if(root==NULL){
+        return;
+    }
+    queue<bstnode*>q;
+    q.push(root);
+    while(!q.empty()){
+        bstnode * current  = q.front();
+        q.pop();
+        cout<<current->data<<"->";
+        if(current->left!=NULL){
+            q.push(current->left);
+        }
+        if(current->right!=NULL){
+            q.push(current->right);
+        }
+
+    }
+}
+
+
 
 void inorder(bstnode *root)
 {
@@ -150,21 +173,41 @@ void inorder(bstnode *root)
 int main()
 {
     bstnode node, *root = NULL;
-    root = node.insert(root, 15);
-    node.insert(root, 12);
-    node.insert(root, 1);           ///  15    ////
-    node.insert(root, 5);       // 5 , 12//       //16//
-    node.insert(root, 16); // 2//     // 3 //          //21//
-    node.insert(root, 3);  // 1//
-    node.insert(root, 2);
-    node.insert(root, 21);
+/*
+            15
+           /  \
+          12   16
+         /       \
+        1         21
+         \
+          5
+        /
+       3
+      /
+     2
+*/
+    root = node.insert(root, 15);  node.insert(root, 12);
+    node.insert(root, 1); node.insert(root, 5);       
+    node.insert(root, 16); node.insert(root, 3);  
+    node.insert(root, 2); node.insert(root, 21);
+/*
+                M
+			   / \
+			  B   Q
+			 / \   \
+			A   C   Z
+*/
+    // root =node.insert(root,'M') ; node.insert(root,'B');
+    //         node.insert(root,'Q') ; node.insert(root,'Z');
+    //         node.insert(root,'A') ; node.insert(root,'C');
 
     inorder(root);
     findmin(root);
     findmax(root);
-    findheights(root);
+    // findheights(root);
     cout << endl;
     cout << "The root element is " << root->data << endl;
+    levelordertraversal(root);
 
     // int n;
     // cout << "enter the number you are looking for : " << endl;
