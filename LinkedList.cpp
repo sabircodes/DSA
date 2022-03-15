@@ -142,6 +142,28 @@ void display(node *&head)
     cout << "NULL" << endl;
 }
 
+void sum(node *&head){
+    int sum = 0;
+    node *temp = head;
+    while(temp != NULL){
+        sum=sum + temp->data;
+        temp = temp->next;
+    }
+    cout<<sum<<endl;
+}
+
+void maxele(node *&head){
+    node *temp = head;
+    int max = INT_MIN;
+    while(temp != NULL){
+        if(temp->data>max){
+            max=temp->data;
+        }
+        temp = temp->next;
+    }
+    cout<<"MAx element is : "<<max<<endl;
+}
+
 int main()
 {
     node *head = NULL;
@@ -153,10 +175,14 @@ int main()
     insertatIndex(head, 69, 2);
     insertatHead(head, 1);
     // deleteNode(head, 6); // this will remove the 6ht element
+    cout<<"Normal display>>>>"<<endl;
     display(head);
-
+     cout<< " reversed display"<<endl;
     reverse(head);
     display(head);
+    cout<<"The sum of all the elments of liked list : "<<endl;
+    sum(head);
+    maxele(head);
 
     return 0;
 }
