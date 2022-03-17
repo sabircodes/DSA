@@ -13,7 +13,7 @@
 //     Stack()
 //     {
 //         top = -1;
-//         // cout << "stacksi empty" << endl;
+//         // cout << "stack is empty" << endl;
 //     }
 //     void push(int val)
 //     {
