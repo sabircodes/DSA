@@ -177,6 +177,11 @@ int main()
     cout << "inserting element at front end \n";
     dq.insertFront(15);
 
+    cout << "inserting element at front : 43 \n";
+    dq.insertFront(43);
+    cout << "inserting element at front : 63 \n";
+    dq.insertFront(63);
+
     cout << "get front element "
          << " "
          << dq.getFront() << endl;
