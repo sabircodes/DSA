@@ -210,6 +210,23 @@ void inorder(bstnode *root)
     inorder(root->left);
     cout << root->data << endl;
     inorder(root->right);
+    
+}
+
+void preorder(bstnode *root){
+    if(!root) return;
+    cout<<root->data<<"->";
+    preorder(root->left);
+    preorder(root->right);
+    
+}
+
+void postorder(bstnode *root){
+    if(!root) return;
+    postorder(root->left);
+    postorder(root->right);
+    cout<<root->data<<"->";
+    
 }
 
 int main()
@@ -266,7 +283,12 @@ int main()
     }
     cout << endl;
     cout << height(root);
-
+    cout<< endl;
+    cout<<"Preorder Traversal: "<<endl;
+    preorder(root);
+    cout<< endl;
+    cout<<"Postorder Traversal: "<<endl;
+    postorder(root);
     // int n;
     // cout << "enter the number you are looking for : " << endl;
     // cin >> n;

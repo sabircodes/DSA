@@ -241,54 +241,54 @@
 //Q6 circular sum array
 
 
-// #include<iostream>
-// using namespace std;
+#include<iostream>
+using namespace std;
 
-// int kadanes(int arr[] , int n ){
-//     int cirsum  =0 ;
-//     int maxsum = INT_MIN;
-//     for (int i = 0; i < n; i++)
-//     {
-//         cirsum=arr[i];
-//         if (cirsum<0)
-//         {
-//             cirsum=0;
-//         }
-//         maxsum = max(maxsum , cirsum);
+int kadanes(int arr[] , int n ){
+    int cirsum  =0 ;
+    int maxsum = INT_MIN;
+    for (int i = 0; i < n; i++)
+    {
+        cirsum=arr[i];
+        if (cirsum<0)
+        {
+            cirsum=0;
+        }
+        maxsum = max(maxsum , cirsum);
         
-//     }
-//     return maxsum;
+    }
+    return maxsum;
     
-// }
-// int main(){
-//     int n ;
-//     cout<<"enter the sizde :";
-//     cin>>n;
-//     int arr[n];
-//     for (int i = 0; i < n; i++)
-//     {
-//         cin>>arr[i];
-//     }
-//     int wrapsum , nonwrapsum;
-//     nonwrapsum = kadanes(arr,n);
-//     int toalsum =  0 ;
-//     for (int i = 0; i <n; i++)
-//     {   
-//         toalsum += arr[i];
-//         arr[i]=-arr[i];
+}
+int main(){
+    int n ;
+    cout<<"enter the sizde :";
+    cin>>n;
+    int arr[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin>>arr[i];
+    }
+    int wrapsum , nonwrapsum;
+    nonwrapsum = kadanes(arr,n);
+    int toalsum =  0 ;
+    for (int i = 0; i <n; i++)
+    {   
+        toalsum += arr[i];
+        arr[i]=-arr[i];
 
-//     }
+    }
 
-//     wrapsum = toalsum + kadanes(arr,n);       //-(- kadanes(arr,n));
+    wrapsum = toalsum + kadanes(arr,n);       //-(- kadanes(arr,n));
 
-//     cout<<max(wrapsum,nonwrapsum)<<endl;
+    cout<<max(wrapsum,nonwrapsum)<<endl;
     
     
 
 
 
-//     return 0;
-// }
+    return 0;
+}
 
 ///PAIR SUM 
 // #include<iostream>
