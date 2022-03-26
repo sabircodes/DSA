@@ -100,7 +100,7 @@ bool search(bstnode *root, int val)
     }
 }
 
-bstnode*findmin(bstnode *root)
+bstnode *findmin(bstnode *root)
 {
     if (root == NULL)
     {
@@ -114,20 +114,23 @@ bstnode*findmin(bstnode *root)
     cout << "The mininmun element in the tree is : " << root->data << endl;
 }
 
-void FindMin(bstnode *root){
-    if(root==NULL){
-        cout<<"Tree is empty !";
-    }
-    while(root->left){
-        root=root->left;
-    }
-    cout<<"minimum element is "<<root->data<<endl;
-}
-void  findmax(bstnode *root)
+void FindMin(bstnode *root)
 {
     if (root == NULL)
     {
-        cout << "Thwe tree is empty!" << endl;
+        cout << "Tree is empty !";
+    }
+    while (root->left)
+    {
+        root = root->left;
+    }
+    cout << "minimum element is " << root->data << endl;
+}
+void findmax(bstnode *root)
+{
+    if (root == NULL)
+    {
+        cout << "The tree is empty!" << endl;
     }
     while (root->right != NULL)
     {
@@ -174,63 +177,72 @@ int height(bstnode *root)
     return max(1 + lheight, 1 + rheight);
 }
 
-int Inpre(bstnode *root){
-    while(root && root->right!=NULL){
-        root=root->right;
+int Inpre(bstnode *root)
+{
+    cout << "Inorder predecessor of root" << endl;
+    while (root && root->right != NULL)
+    {
+        root = root->right;
         return root->data;
+        // cout<<root->data;
     }
 }
-int Insucc(bstnode *root){
-    while(root && root->left!=NULL){
-        root=root->left;
+int Insucc(bstnode *root)
+{
+    cout << "inorder successor of root" << endl;
+    while (root && root->left != NULL)
+    {
+        root = root->left;
         return root->data;
     }
-
 }
 // int Insucc(bstnode *root);
 
+bstnode *deleteNode(bstnode *root, int val)
+{
 
-bstnode * deleteNode(bstnode *root, int val){
-   
-    if(root==NULL){
+    if (root == NULL)
+    {
         return root;
     }
-    
-    if(val < root->data){
+
+    if (val < root->data)
+    {
         root->left = deleteNode(root->left, val);
     }
-    else if( val > root->data){
+    else if (val > root->data)
+    {
         root->right = deleteNode(root->right, val);
     }
-   else{
-    //    case 1: No child
-       if(root->left==NULL && root->right==NULL){
-        delete root;
-        root=NULL;
+    else
+    {
+        //    case 1: No child
+        if (root->left == NULL && root->right == NULL)
+        {
+            delete root;
+            root = NULL;
+        }
+        else if (root->right == NULL)
+        {
+            bstnode *temp = root;
+            root = root->left;
+            delete temp;
+        }
+        else if (root->left == NULL)
+        {
+            bstnode *temp = root;
+            root = root->right;
+            delete temp;
+        }
+        else
+        {
+            bstnode *temp = findmin(root->right);
+            root->data = temp->data;
+            root->right = deleteNode(root->right, temp->data);
+        }
     }
-    else if(root->right==NULL){
-        bstnode*temp =root;
-        root=root->left;
-        delete temp;
 
-    }
-    else if(root->left==NULL){
-        bstnode*temp =root;
-        root=root->right;
-        delete temp;
-
-    }
-    else{
-        bstnode*temp =findmin(root->right);
-        root->data = temp->data;
-        root->right = deleteNode(root->right,temp->data);
-    }
-
-
-   }
-    
     return root;
-
 }
 
 vector<int> zigzagtraversal(bstnode *root)
@@ -271,7 +283,6 @@ vector<int> zigzagtraversal(bstnode *root)
     return ans;
 }
 
-
 void inorder(bstnode *root)
 {
     if (!root)
@@ -279,25 +290,26 @@ void inorder(bstnode *root)
         return;
     }
     inorder(root->left);
-    cout << root->data<<"->";
+    cout << root->data << "->";
     inorder(root->right);
-    
 }
 
-void preorder(bstnode *root){
-    if(!root) return;
-    cout<<root->data<<"->";
+void preorder(bstnode *root)
+{
+    if (!root)
+        return;
+    cout << root->data << "->";
     preorder(root->left);
     preorder(root->right);
-    
 }
 
-void postorder(bstnode *root){
-    if(!root) return;
+void postorder(bstnode *root)
+{
+    if (!root)
+        return;
     postorder(root->left);
     postorder(root->right);
-    cout<<root->data<<"->";
-    
+    cout << root->data << "->";
 }
 
 int main()
@@ -329,7 +341,7 @@ int main()
     // node.insert(root,40);
     // node.insert(root,20);
     // node.insert(root,30);
-    
+
     /*
                     M
                    / \
@@ -344,43 +356,55 @@ int main()
     inorder(root);
     FindMin(root);
     findmax(root);
-    // findheights(root);
+
     cout << endl;
     cout << "The root element is " << root->data << endl;
 
     cout << "Level order traversal" << endl;
     levelordertraversal(root);
     cout << endl;
+
     cout << "zig zag " << endl;
-    // cout << zigzagLevelOrder(root);
-    vector<int>v;
+    vector<int> v;
     v = zigzagtraversal(root);
-    for(int i = 0  ; i < v.size(); i++){
-        cout<<v[i]<<"->"; 
+    for (int i = 0; i < v.size(); i++)
+    {
+        cout << v[i] << "->";
     }
     cout << endl;
+
     cout << height(root);
-    cout<< endl;
-    cout<<"Preorder Traversal: "<<endl;
+    cout << endl;
+
+    cout << "Preorder Traversal: " << endl;
     preorder(root);
-    cout<< endl;
-    cout<<"Postorder Traversal: "<<endl;
+    cout << endl;
+
+    cout << "Postorder Traversal: " << endl;
     postorder(root);
 
-    cout<<endl;
-    cout<<"Running delete function !"<<endl;
-    root = deleteNode(root,3);
-    cout<<"after deletion process!"<<endl;
-    // levelordertraversal(root);
+    cout << endl;
+    cout << "Running delete function !" << endl;
+    root = deleteNode(root, 3);
+
+    cout << "after deletion process!" << endl;
     inorder(root);
-    // int n;
-    // cout << "enter the number you are looking for : " << endl;
-    // cin >> n;
-    // if (search(root, n) == true)
-    //     cout << "found " << n << endl;
-    // else
-    // {
-    //     cout << "error";
-    // }
+    cout << endl;
+
+    cout << Inpre(root);
+    cout << endl;
+
+    cout << Insucc(root);
+    cout << endl;
+
+    int n;
+    cout << "enter the number you are looking for : " << endl;
+    cin >> n;
+    if (search(root, n) == true)
+        cout << "found " << n << endl;
+    else
+    {
+        cout << "error , number you are looking for does not exist in the tree!";
+    }
     return 0;
 }
