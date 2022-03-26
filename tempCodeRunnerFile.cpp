@@ -1,5 +1,3 @@
-SavingAccount s;
-    // s.entry();
-    // s.deposit();
-    // s.CPI();
-    // s.withdraw(500);
+ // if(root==NULL){
+    //     return NULL;
+    // }

@@ -20,6 +20,7 @@ public:
     }
 
     bstnode *insert(bstnode *root, int val);
+    bstnode *deleteNode(bstnode *root, int val);
     // bstnode *zigzagtraversal(bstnode *root);
 };
 
@@ -99,7 +100,7 @@ bool search(bstnode *root, int val)
     }
 }
 
-void findmin(bstnode *root)
+bstnode*findmin(bstnode *root)
 {
     if (root == NULL)
     {
@@ -109,9 +110,20 @@ void findmin(bstnode *root)
     {
         root = root->left;
     }
+    return root;
     cout << "The mininmun element in the tree is : " << root->data << endl;
 }
-void findmax(bstnode *root)
+
+void FindMin(bstnode *root){
+    if(root==NULL){
+        cout<<"Tree is empty !";
+    }
+    while(root->left){
+        root=root->left;
+    }
+    cout<<"minimum element is "<<root->data<<endl;
+}
+void  findmax(bstnode *root)
 {
     if (root == NULL)
     {
@@ -162,6 +174,65 @@ int height(bstnode *root)
     return max(1 + lheight, 1 + rheight);
 }
 
+int Inpre(bstnode *root){
+    while(root && root->right!=NULL){
+        root=root->right;
+        return root->data;
+    }
+}
+int Insucc(bstnode *root){
+    while(root && root->left!=NULL){
+        root=root->left;
+        return root->data;
+    }
+
+}
+// int Insucc(bstnode *root);
+
+
+bstnode * deleteNode(bstnode *root, int val){
+   
+    if(root==NULL){
+        return root;
+    }
+    
+    if(val < root->data){
+        root->left = deleteNode(root->left, val);
+    }
+    else if( val > root->data){
+        root->right = deleteNode(root->right, val);
+    }
+   else{
+    //    case 1: No child
+       if(root->left==NULL && root->right==NULL){
+        delete root;
+        root=NULL;
+    }
+    else if(root->right==NULL){
+        bstnode*temp =root;
+        root=root->left;
+        delete temp;
+
+    }
+    else if(root->left==NULL){
+        bstnode*temp =root;
+        root=root->right;
+        delete temp;
+
+    }
+    else{
+        bstnode*temp =findmin(root->right);
+        root->data = temp->data;
+        root->right = deleteNode(root->right,temp->data);
+    }
+
+
+   }
+    
+    return root;
+
+}
+
 vector<int> zigzagtraversal(bstnode *root)
 {
     vector<int> ans;
@@ -208,7 +279,7 @@ void inorder(bstnode *root)
         return;
     }
     inorder(root->left);
-    cout << root->data << endl;
+    cout << root->data<<"->";
     inorder(root->right);
     
 }
@@ -253,6 +324,12 @@ int main()
     node.insert(root, 3);
     node.insert(root, 2);
     node.insert(root, 21);
+    // root = node.insert(root,50);
+    // node.insert(root,10);
+    // node.insert(root,40);
+    // node.insert(root,20);
+    // node.insert(root,30);
+    
     /*
                     M
                    / \
@@ -265,7 +342,7 @@ int main()
     //         node.insert(root,'A') ; node.insert(root,'C');
 
     inorder(root);
-    findmin(root);
+    FindMin(root);
     findmax(root);
     // findheights(root);
     cout << endl;
@@ -289,6 +366,13 @@ int main()
     cout<< endl;
     cout<<"Postorder Traversal: "<<endl;
     postorder(root);
+
+    cout<<endl;
+    cout<<"Running delete function !"<<endl;
+    root = deleteNode(root,3);
+    cout<<"after deletion process!"<<endl;
+    // levelordertraversal(root);
+    inorder(root);
     // int n;
     // cout << "enter the number you are looking for : " << endl;
     // cin >> n;
