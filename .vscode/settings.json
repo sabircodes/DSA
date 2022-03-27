@@ -14,7 +14,8 @@
         "*.tcc": "cpp",
         "unordered_map": "cpp",
         "random": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "iosfwd": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
