@@ -1,26 +1,41 @@
-#include<iostream>
-#include<string>
-using namespace std;
-class yotubechanel{
-    public :
-        string Name;
-        int Subscriber;
-        yotubechanel(string name , int subscriber){
-            Name = name;
-            Subscriber = subscriber;
+// OVERLOADING (+) OPERATOR
 
-        }
+#include <iostream>
+using namespace std;
+class complex
+{
+
+public:
+    int real;
+    int img;
+
+    complex(int x = 0, int y = 0)
+    {
+        real = x;
+        img = y;
+    }
+
+    complex operator+(complex x) //format for operator overloading
+    {
+        complex temp;
+        temp.real = real + x.real;
+        temp.img = img + x.img;
+        return temp;
+    }
 };
 
-ostream &operator<<(ostream &COUT, yotubechanel &ytchanel){
-    COUT<<"NAME: "<<ytchanel.Name<<endl;
-    COUT<<"Sunscriber: "<<ytchanel.Subscriber<<endl;
-    return COUT;
-}
-int main(){
-    yotubechanel y1("sabircodes",540000);
-    // cout<<y1<<endl; // this line will priduce an error , in order for this to work we have to overload the (<<) operator
-    //After overloading the operator
-    cout<<y1<<endl; 
+int main()
+{
+    complex c1(3, 5);
+    complex c2(5, 4);
+
+    complex c3;
+    c3 = c1 + c2;
+    cout << "real : " << c3.real << endl;
+    cout << "imag : " << c3.img << endl;
+    cout << "ans : " << c3.real << "+"
+         << "i" << c3.img << endl;
+
     return 0;
 }
+
