@@ -37,45 +37,45 @@
 // }
 
 // BUBBLE SORT
-// #include <iostream>
-// using namespace std;
-// int main()
-// {
-//     int size;
-//     cout << "enter the size: ";
-//     cin >> size;
+#include <iostream>
+using namespace std;
+int main()
+{
+    int size;
+    cout << "enter the size: ";
+    cin >> size;
 
-//     int arr[size];
-//     for (int i = 0; i < size; i++)
-//     {
-//         cin >> arr[i];
-//     }
+    int arr[size];
+    for (int i = 0; i < size; i++)
+    {
+        cin >> arr[i];
+    }
 
-//     // buble sort
-//     int count = 1;
-//     while (count < size)
-//     {
-//         for (int i = 0 ; i < size-count; i++)
-//         {
-//             if (arr[i] > arr[i + 1])
-//             {
-//                 int temp;
-//                 temp = arr[i];
-//                 arr[i]=arr[i + 1];
-//                 arr[i + 1]=temp;
-//             }
+    // buble sort
+    int count = 1;
+    while (count < size)
+    {
+        for (int i = 0 ; i < size-count; i++)
+        {
+            if (arr[i] > arr[i + 1])
+            {
+                int temp;
+                temp = arr[i];
+                arr[i]=arr[i + 1];
+                arr[i + 1]=temp;
+            }
 
-//         }
-//         count++;
-//     }
+        }
+        count++;
+    }
 
-//     for (int i = 0; i < size; i++)
-//     {
-//         cout << arr[i] << " ";
-//     }
+    for (int i = 0; i < size; i++)
+    {
+        cout << arr[i] << " ";
+    }
 
-//     return 0;
-// }
+    return 0;
+}
 // INSERTIN SORT
 // insert an elment from unsorted array ti its corect position in sorted Array.
 // #include<iostream>
@@ -192,51 +192,51 @@
 // }
 
 // Quick sort
-#include <iostream>
-using namespace std;
-void swap(int &a, int &b)
-{
-    int temp;
-    temp = a;
-    a = b;
-    b = temp;
-}
+// #include <iostream>
+// using namespace std;
+// void swap(int &a, int &b)
+// {
+//     int temp;
+//     temp = a;
+//     a = b;
+//     b = temp;
+// }
 
-//the partition function 
-int partition(int arr[], int start, int end)
-{
-    int pivot = arr[end];
-    int pindex = start;
-    for (int i = start ; i < end; i++)
-    {
-        if (arr[i] <= pivot)
-        {
-            swap(arr[i], arr[pindex]);
-            pindex++;
-        }
-    }
-    swap(arr[pindex], arr[end]);
-    return pindex;
-}
+// //the partition function 
+// int partition(int arr[], int start, int end)
+// {
+//     int pivot = arr[end];
+//     int pindex = start;
+//     for (int i = start ; i < end; i++)
+//     {
+//         if (arr[i] <= pivot)
+//         {
+//             swap(arr[i], arr[pindex]);
+//             pindex++;
+//         }
+//     }
+//     swap(arr[pindex], arr[end]);
+//     return pindex;
+// }
 
-void Quicksort(int arr[], int start, int end)
-{
-    if (start < end)
-    {
-        int partionindex = partition(arr, start, end);
-        Quicksort(arr, start, partionindex - 1);
-        Quicksort(arr, partionindex + 1, end);
-    }
-}
+// void Quicksort(int arr[], int start, int end)
+// {
+//     if (start < end)
+//     {
+//         int partionindex = partition(arr, start, end);
+//         Quicksort(arr, start, partionindex - 1);
+//         Quicksort(arr, partionindex + 1, end);
+//     }
+// }
 
-int main()
-{
-    int arr[] = {9, 6, 3, 8, 5, 2, 7, 4, 1};
-    Quicksort(arr, 0, 8);
-    for (int i = 0; i < 9; i++)
-    {
-        cout << arr[i] << " ";
-    }
+// int main()
+// {
+//     int arr[] = {9, 6, 3, 8, 5, 2, 7, 4, 1};
+//     Quicksort(arr, 0, 8);
+//     for (int i = 0; i < 9; i++)
+//     {
+//         cout << arr[i] << " ";
+//     }
 
-    return 0;
-}
+//     return 0;
+// }
