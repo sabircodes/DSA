@@ -292,7 +292,7 @@
 //      return 0;
 // }
 
-//ANOTHER SOLUTION USING VECTORS AND TEMPLATES FOR
+// ANOTHER SOLUTION USING VECTORS AND TEMPLATES FOR
 
 // #include <iostream>
 // #include <vector>
@@ -310,8 +310,6 @@
 //     cout << endl;
 // }
 
-
-
 // int main()
 // {
 //     vector<string> v1 = {"STRING", "SABIR", "SUPERMAN"};
@@ -322,3 +320,131 @@
 //     outputVector(v1);
 //     return 0;
 // }
+
+// Q6
+//  Create a class by name date with the member data day, month and year.
+//  Perform the following:
+//   Overload all relational operators <,<=,>,>=,==,!=
+//   Overload ++ operator to increment a date by one day
+//   Overload + to add given number of days to find the next date
+//   Provide the necessary function to use the statement like days=dt;
+//  where days is an int variable and dt is an object of date class. The
+//  statement is intended to assign the number of days elapsed in the
+//  current year of the date to the variable days. Note that this is a case
+//  of conversion from derived type to basic type
+
+#include <iostream>
+using namespace std;
+class date
+{
+
+    int day;
+    int month;
+    int year;
+
+public:
+    date(int day = 0, int month = 0, int year = 0)
+    {
+        this->day = day;
+        this->month = month;
+        this->year = year;
+    }
+
+    friend date operator++(date &d);         // incrementing day by 1
+    friend date operator+(date &d, int val); // this overloading will help to add desired number of days
+    friend bool operator<(date &d, date &x);
+    friend bool operator!=(date &d, date &x);
+    friend bool operator==(date &d, date &x);
+    friend bool operator<=(date &d, date &x);
+    void display()
+    {
+        cout << "Date:" << day << "/" << month << "/" << year << endl;
+    }
+};
+
+date operator+(date &d, int val)
+{
+    // date temp ;
+    return date(d.day + val, d.month, d.year);
+    // return temp;
+}
+
+date operator++(date &d)
+{
+    return date(++d.day, d.month, d.year);
+}
+bool operator<(date &d, date &x)
+{
+    return (d.day < x.day);
+}
+bool operator!=(date &d, date &x){
+    return !(d.day == x.day);
+}
+bool operator ==(date &d, date &x){
+    return (d.day == x.day);
+}
+bool operator <=(date &d, date &x){
+    return (d.day <= x.day);
+}
+
+int main()
+{
+    int dd, mm, yy;
+    cout << "Enter the date  : ";
+    cin >> dd;
+
+    cout << "Enter the month : ";
+    cin >> mm;
+
+    cout << "Enter the year : ";
+    cin >> yy;
+
+    date dt(dd, mm, yy);
+    // dt.display();
+    cout << "after overloading (+) operator  " << endl; //☠️
+
+    date d2 = dt + 5;
+    d2.display();
+
+    cout << "after overloading the (++) operator" << endl;
+    date d3 = ++dt;
+    d3.display();
+
+    cout << "after overloading the (<) operator" << endl;
+    if (dt < d2)
+    {
+        cout << "d2 is greater than dt" << endl;
+    }
+    else
+    {
+        cout << "d2 is less than dt" << endl;
+    }
+    cout<<"after overloading (!=) operator "<<endl;
+    if(dt!=d3){
+        cout<<"true"<<endl;
+    }
+    else{
+        cout<<"false";
+    }
+
+    cout<<"after overloading (==) operator "<<endl;
+
+    if(d2==d3){
+        cout<<"true"<<endl;
+    }
+    else{
+        cout<<"false";
+    }   
+
+    cout<<"after overloading (<=) operator "<<endl;
+    
+    if(d2<=d3){
+        cout<<"true"<<endl;
+    }
+    else{
+        cout<<"false";
+    }   
+
+
+    return 0;
+}

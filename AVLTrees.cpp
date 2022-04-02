@@ -138,7 +138,7 @@ node *minnode(node *&root)
 
 node *deleteNode(node *root, int val)
 {
-    if (root == NULL)
+        if (root == NULL)
     {
         return root;
     }
@@ -146,13 +146,13 @@ node *deleteNode(node *root, int val)
     {
         root->left = deleteNode(root->left, val);
     }
-    else if (val > root->right->data)
+    else if (val > root->data)
     {
         root->right = deleteNode(root->right, val);
     }
     else
     {
-        if (root->left == NULL || root->right == NULL)
+        if (root->left == NULL && root->right == NULL)
         {
             delete root;
             root = NULL;
@@ -223,9 +223,16 @@ node *deleteNode(node *root, int val)
     {
         // cout<<"preorder";
         node *root = NULL;
-        root = insert(root, 10);
-        root = insert(root, 5);
+        root = insert(root, 4);
         root = insert(root, 2);
+        root = insert(root, 6);
+        root = insert(root, 1);
+        root = insert(root, 3);
+        root = insert(root, 5);
+        root = insert(root, 7);
+
+       
+
         cout << "preorder" << endl;
         preorder(root);
         return 0;
