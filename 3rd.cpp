@@ -81,3 +81,63 @@
 //         }
 //         return head;
 //     }
+
+//array of linked list 
+#include<iostream>
+using namespace std;
+class node{
+    public:
+        int data;
+        node*next;
+        node(int val){
+            data=val;
+            next = NULL;
+        }
+};
+int main(){
+
+    int size = 10 ;
+    //pointer to pointer  array
+    node**head = new node*[size];
+
+
+    //initializing array to NULL
+    for(int i=0; i<size; i++){
+        *(head+i) =NULL;
+
+    }
+
+    //traverse the  pointer array
+    for(int i=0; i<size; i++){
+        node*prev = NULL;
+        int s = 4 ;
+        while(s--){
+        node*newnode = new node(i*s);
+        
+        if(*(head+i) == NULL){
+            *(head+i) =newnode;
+
+        }
+        else{
+            prev->next = newnode;
+
+        }
+        prev=newnode;
+        }
+    }
+
+    for(int i=1; i<size; i++){
+        node*temp = *(head+i);
+        cout<<i<<"--> \t";
+        //traversing through the linked list
+        while(temp){
+            cout<<temp->data << "->";
+            temp=temp->next;
+        }
+        cout<<"NULL"<<endl;
+
+    }
+
+
+     return 0;
+}

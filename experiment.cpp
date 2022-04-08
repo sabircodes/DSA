@@ -1,84 +1,84 @@
 // // Question 1
 // //  Creating  bank account class
-// #include <iostream>
-// using namespace std;
-// class BankAccount
-// {
-// private:
-//     string name;
-//     int account_number;
-//     string account_type;
-//     int balance = 500;
-//     int deposit;
-//     int withdraw;
+#include <iostream>
+using namespace std;
+class BankAccount
+{
+private:
+    string name;
+    int account_number;
+    string account_type;
+    int balance = 500;
+    int deposit;
+    int withdraw;
 
-// public:
-//     BankAccount()
-//     {
-//         // default constructor
-//     }
-//     BankAccount(string name, int account_number, string account_type, int balance)
-//     {
-//         cout << "Name: " << this->name << endl
-//              << " Account Number: " << this->account_number
-//              << "account_type: " << this->account_type << endl
-//              << "balance: " << balance << endl;
-//     }
+public:
+    BankAccount()
+    {
+        // default constructor
+    }
+    BankAccount(string name, int account_number, string account_type, int balance)
+    {
+        cout << "Name: " << this->name << endl
+             << " Account Number: " << this->account_number
+             << "account_type: " << this->account_type << endl
+             << "balance: " << balance << endl;
+    }
 
-//     void getinput()
-//     {
-//         cout << "Enter name: " << endl;
-//         cin >> name;
+    void getinput()
+    {
+        cout << "Enter name: " << endl;
+        cin >> name;
 
-//         cout << "Enter account_number: " << endl;
-//         cin >> account_number;
+        cout << "Enter account_number: " << endl;
+        cin >> account_number;
 
-//         cout << "enter account_type : " << endl;
-//         cin >> account_type;
-//     }
+        cout << "enter account_type : " << endl;
+        cin >> account_type;
+    }
 
-//     void deposit_amt()
-//     {
-//         cout << "enter the amount to be deposited : " << endl;
-//         cin >> deposit;
+    void deposit_amt()
+    {
+        cout << "enter the amount to be deposited : " << endl;
+        cin >> deposit;
 
-//         balance += deposit;
-//     }
+        balance += deposit;
+    }
 
-//     void withdraw_amt()
-//     {
+    void withdraw_amt()
+    {
 
-//         cout << "enter the amount to be withdrawn : " << endl;
-//         cin >> withdraw;
-//         if (withdraw > balance)
-//         {
-//             cout << "Not enough fund available to withdraw ! " << endl;
-//         }
-//         else
-//         {
-//             balance -= withdraw;
-//             cout << "the amount  left after withdrawal is : " << balance << endl;
-//         }
-//     }
+        cout << "enter the amount to be withdrawn : " << endl;
+        cin >> withdraw;
+        if (withdraw > balance)
+        {
+            cout << "Not enough fund available to withdraw ! " << endl;
+        }
+        else
+        {
+            balance -= withdraw;
+            cout << "the amount  left after withdrawal is : " << balance << endl;
+        }
+    }
 
-//     void display()
-//     {
-//         cout << "the infromation about the customer: " << endl;
-//         cout << "name: " << name << endl;
-//         cout << "balance: " << balance;
-//     }
-// };
+    void display()
+    {
+        cout << "the infromation about the customer: " << endl;
+        cout << "name: " << name << endl;
+        cout << "balance: " << balance;
+    }
+};
 
-// int main()
-// {
-//     BankAccount b;
-//     b.getinput();
-//     b.deposit_amt();
-//     b.withdraw_amt();
-//     b.display();
+int main()
+{
+    BankAccount b;
+    b.getinput();
+    b.deposit_amt();
+    b.withdraw_amt();
+    b.display();
 
-//     return 0;
-// }
+    return 0;
+}
 
 // Q2 Guess the number
 // #include <iostream>
@@ -200,7 +200,10 @@
 //         cout<<"Amount after apllying comppund intresRate of 4 : "<< CI<<endl;
 //     }
 
-//     void withdraw(int input){
+//     void withdraw(){
+//         int input;
+//         cout<<"enter the amount you want to withdraw : ";
+//         cin>>input;
 //         cout<<"withdrawal in process.... "<<endl;
 //         if(input<balance){
 //             balance -=input;
@@ -227,7 +230,10 @@
 //         cout<<"balance: "<<balance<<endl;
 
 //         }
-//         void withdraw(int input){
+//         void withdraw(){
+//             int input;
+//             cout<<"enter the amount you want to withdraw : ";
+//             cin>>input;
 //             cout<<"withdrawing in process..."<<endl;
 //             if(input<balance){
 //             balance -=input;
@@ -256,17 +262,17 @@
 
 // };
 // int main(){
-//     // SavingAccount s;
-//     // s.entry();
-//     // s.deposit();
-//     // s.CPI();
-//     // s.withdraw(500);
+//     SavingAccount s;
+//     s.entry();
+//     s.deposit();
+//     s.CPI();
+//     s.withdraw();
 //     cout<<"Curent Account activated.."<<endl;
 //     currentAccount c;
 //     c.entry();
 //     c.deposit();
 //     cout<<"withdrawl window : "<<endl;
-//     c.withdraw(2000);
+//     c.withdraw();
 //     c.minbalance();
 //      return 0;
 // }
@@ -321,130 +327,151 @@
 //     return 0;
 // }
 
-// Q6
-//  Create a class by name date with the member data day, month and year.
-//  Perform the following:
-//   Overload all relational operators <,<=,>,>=,==,!=
-//   Overload ++ operator to increment a date by one day
-//   Overload + to add given number of days to find the next date
-//   Provide the necessary function to use the statement like days=dt;
-//  where days is an int variable and dt is an object of date class. The
-//  statement is intended to assign the number of days elapsed in the
-//  current year of the date to the variable days. Note that this is a case
-//  of conversion from derived type to basic type
+// // Q6
+// //  Create a class by name date with the member data day, month and year.
+// //  Perform the following:
+// //   Overload all relational operators <,<=,>,>=,==,!=
+// //   Overload ++ operator to increment a date by one day
+// //   Overload + to add given number of days to find the next date
+// //   Provide the necessary function to use the statement like days=dt;
+// //  where days is an int variable and dt is an object of date class. The
+// //  statement is intended to assign the number of days elapsed in the
+// //  current year of the date to the variable days. Note that this is a case
+// //  of conversion from derived type to basic type
 
-#include <iostream>
-using namespace std;
-class date
-{
+// #include <iostream>
+// using namespace std;
+// class date
+// {
 
-    int day;
-    int month;
-    int year;
+//     int day;
+//     int month;
+//     int year;
 
-public:
-    date(int day = 0, int month = 0, int year = 0)
-    {
-        this->day = day;
-        this->month = month;
-        this->year = year;
-    }
+// public:
+//     date(int day = 0, int month = 0, int year = 0)
+//     {
+//         this->day = day;
+//         this->month = month;
+//         this->year = year;
+//     }
 
-    friend date operator++(date &d);         // incrementing day by 1
-    friend date operator+(date &d, int val); // this overloading will help to add desired number of days
-    friend bool operator<(date &d, date &x);
-    friend bool operator!=(date &d, date &x);
-    friend bool operator==(date &d, date &x);
-    friend bool operator<=(date &d, date &x);
-    void display()
-    {
-        cout << "Date:" << day << "/" << month << "/" << year << endl;
-    }
-};
+//     friend date operator ++ (date &d);         // incrementing day by 1
+//     friend date operator + (date &d, int val); // this overloading will help to add desired number of days
+//     friend bool operator < (date &d, date &x);
+//     friend bool operator != (date &d, date &x);
+//     friend bool operator == (date &d, date &x);
+//     friend bool operator <= (date &d, date &x);
+//     friend bool operator >= (date &d, date &x);
+//     void display()
+//     {
+//         cout << "Date:" << day << "/" << month << "/" << year << endl;
+//     }
+// };
 
-date operator+(date &d, int val)
-{
-    // date temp ;
-    return date(d.day + val, d.month, d.year);
-    // return temp;
-}
+// date operator+(date &d, int val)
+// {
+//     // date temp ;
+//     return date(d.day + val, d.month, d.year);
+//     // return temp;
+// }
 
-date operator++(date &d)
-{
-    return date(++d.day, d.month, d.year);
-}
-bool operator<(date &d, date &x)
-{
-    return (d.day < x.day);
-}
-bool operator!=(date &d, date &x){
-    return !(d.day == x.day);
-}
-bool operator ==(date &d, date &x){
-    return (d.day == x.day);
-}
-bool operator <=(date &d, date &x){
-    return (d.day <= x.day);
-}
+// date operator++(date &d)
+// {
+//     return date(++d.day, d.month, d.year);
+// }
+// bool operator<(date &d, date &x)
+// {
+//     return (d.day < x.day);
+// }
+// bool operator!=(date &d, date &x){
+//     return !(d.day == x.day);
+// }
+// bool operator ==(date &d, date &x){
+//     return (d.day == x.day);
+// }
+// bool operator <=(date &d, date &x){
+//     return (d.day <= x.day);
+// }
+// bool operator >=(date &d, date &x){
+//     return (d.day >= x.day);
+// }
 
-int main()
-{
-    int dd, mm, yy;
-    cout << "Enter the date  : ";
-    cin >> dd;
+// int main()
+// {
+//     int dd, mm, yy;
+//     cout << "Enter the date  : ";
+//     cin >> dd;
 
-    cout << "Enter the month : ";
-    cin >> mm;
+//     cout << "Enter the month : ";
+//     cin >> mm;
 
-    cout << "Enter the year : ";
-    cin >> yy;
+//     cout << "Enter the year : ";
+//     cin >> yy;
 
-    date dt(dd, mm, yy);
-    // dt.display();
-    cout << "after overloading (+) operator  " << endl; //☠️
+//     date dt(dd, mm, yy);
+//     // dt.display();
+//     cout << "after overloading (+) operator  " << endl; //☠️
 
-    date d2 = dt + 5;
-    d2.display();
+//     date d2 = dt + 5;
+//     d2.display();
 
-    cout << "after overloading the (++) operator" << endl;
-    date d3 = ++dt;
-    d3.display();
+//     cout << "after overloading the (++) operator" << endl;
+//     date d3 = ++dt;
+//     d3.display();
 
-    cout << "after overloading the (<) operator" << endl;
-    if (dt < d2)
-    {
-        cout << "d2 is greater than dt" << endl;
-    }
-    else
-    {
-        cout << "d2 is less than dt" << endl;
-    }
-    cout<<"after overloading (!=) operator "<<endl;
-    if(dt!=d3){
-        cout<<"true"<<endl;
-    }
-    else{
-        cout<<"false";
-    }
+//     cout << "after overloading the (<) operator" << endl;
+//     if (dt < d2)
+//     {
+//         cout << "d2 is greater than dt" << endl;
+//     }
+//     else
+//     {
+//         cout << "d2 is less than dt" << endl;
+//     }
+//     cout<<endl;
+//     cout<<"after overloading (!=) operator "<<endl;
+//     if(dt!=d3){
+//         cout<<"true"<<endl;
+//         cout<<"dt is no tequal to d3"<<endl;
+//     }
+//     else{
+//         cout<<"false"<<endl;
+//     }
+//     cout<<endl;
+//     cout<<"after overloading (==) operator "<<endl;
 
-    cout<<"after overloading (==) operator "<<endl;
 
-    if(d2==d3){
-        cout<<"true"<<endl;
-    }
-    else{
-        cout<<"false";
-    }   
-
-    cout<<"after overloading (<=) operator "<<endl;
+//     //this function here is compairing the two dates 
+//     if(d2==d3){
+//         cout<<"true"<<endl;
+//         cout<<"The date sare equal "<<endl;
+//     }
+//     else{
+//         cout<<"false"<<endl;
+//         cout<<"The date sare not equal "<<endl;
+//     }   
+//     cout<<endl;
+//     cout<<"after overloading (<=) operator "<<endl;
     
-    if(d2<=d3){
-        cout<<"true"<<endl;
-    }
-    else{
-        cout<<"false";
-    }   
+//     if(d2<=d3){
+//         cout<<"true"<<endl;
+//         cout<<"d2 is less than d3"<<endl;
+//     }
+//     else{
+//         cout<<"false"<<endl;
+//         cout<<"d2 is not less than d3"<<endl;
+//     }   
 
 
-    return 0;
-}
+//     cout<<"after overloading (>=) operator"<<endl;
+//     if(d3>=dt){
+//         cout<<"true"<<endl;
+//         cout<<"d3 is greater than dt"<<endl;
+//     }
+//     else{
+//         cout<<"condition not stattisfied!"<<endl;
+//     }
+
+//     return 0;
+// }
