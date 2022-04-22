@@ -1,0 +1,65 @@
+class hashNode {
+public:
+    int key;
+    int value;
+    hashNode* next;
+        
+    hashNode(int k, int v, hashNode* n) {
+        key = k;
+        value = v;
+        next = n;
+    }
+};
+
+
+class MyHashMap {
+public:
+  const static int siz = 19997;
+    const static int mult = 12582917;
+    hashNode* data[siz];
+    
+    
+    int hashfunc(int key){
+        return (int)((long )key * mult %siz);
+    }
+    
+    void put(int key, int value) {
+        remove(key);
+        int i = hashfunc(key);
+       
+        hashNode*newnode = new hashNode(key , value , data[i]);
+        data[i] = newnode;
+        
+        
+    }
+    
+    int get(int key) {
+        int i = hashfunc(key);
+        hashNode*node = data[i];
+        while(node!=NULL){
+            if(node -> key == key ){
+                return node->value;
+                }
+            node = node->next;
+        }
+        return -1;
+        
+    }
+    
+    void remove(int key) {
+        int index = hashfunc(key);
+        hashNode*node = data[index];
+        if(node==NULL) return ;
+        if(node->key == key)data[index]=node->next;
+        while(node->next != NULL){
+            if(node->next->key == key){
+                node->next = node->next->next;
+                return;
+            }
+            node  = node->next;
+        }
+        
+        
+        
+    }
+};
