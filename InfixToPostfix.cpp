@@ -113,7 +113,7 @@ int weightprecedence(char c)
     case '/':
         weight = 2;
         break;
-    case '$':
+    case '^':
         weight = 3;
         break;
     }

@@ -12,7 +12,7 @@ bool isdigit(char a)
 }
 bool isoperator(char a)
 {
-    if (a == '+' || a == '-' || a == '*' || a == '/')
+    if (a == '+' || a == '-' || a == '*' || a == '/' || a=='^')
     {
         return true;
     }
@@ -35,6 +35,11 @@ int operation(char z, int operand1, int operand2)
     if (z == '/')
     {
         return operand1 / operand2;
+    }
+
+    if(z=='^'){
+        return operand1^operand2;
+
     }
     else {
         cout<<"An error occured !!";
@@ -77,10 +82,12 @@ int evaluatepostfix(string exp)
 
 int main()
 {
-    string str;
+    string str ;
+    //NOTE TO SELF  while entering the value provide space in between them for eg = 2 3 +
     cout<<"enter the expression to be evaliated : "<<endl;
     getline(cin , str);
     int result = evaluatepostfix(str);
     cout<<"output : "<<result<<endl;
     return 0;
 }
+

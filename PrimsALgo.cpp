@@ -1,4 +1,4 @@
-//NRUTE FORCE APPROACH
+// BRUTE FORCE APPROACH
 
 // #include <iostream>
 // #define I INT_MAX
@@ -92,67 +92,85 @@
 //     return 0;
 // }
 
-#include<iostream>
+
 #include<bits/stdc++.h>
-
 using namespace std;
+
 int main(){
-    int vertex  , edges;
-    cout<<"Enter Vertex and Edges : "<< endl;
-    cin>>vertex>>edges;
-    vector<pair<int,int>>adj[vertex];
-    int a, b , wt;
-        cout<<"Enter a ,b ,wt : "<< endl;                                               
-    for(int i = 0; i < vertex ; i++){
-        cin>>a>>b>>wt;
-        adj[a].push_back(make_pair(b,wt));
-        adj[b].push_back(make_pair(a,wt));
-    }
-
-    int parent[vertex];
-    int weight[vertex];
-    bool visited[vertex];
-    for(int i = 0 ; i < vertex ; i++){
-        weight[i] = INT_MAX ;
-        visited[i] = false;
-
-    }
-
-    priority_queue<pair<int,int> , vector<pair<int,int>> , greater<pair<int,int>> >pq;
-    //this will give you minimum pair in log n times 
+	int N=6,m=7;
+	vector<pair<int,int> > adj[N]; 
+	
+	
+	
+	adj[0].push_back({1,5});
+	adj[0].push_back({2,10});
+	adj[0].push_back({3,100});
+	adj[1].push_back({0,5});
+	adj[1].push_back({4,200});
+	adj[1].push_back({3,50});
+	adj[2].push_back({0,10});
+	adj[3].push_back({0,100});
+	adj[3].push_back({4,250});
+	adj[3].push_back({1,50});
+	adj[4].push_back({1,200});
+	adj[4].push_back({3,100});
+	adj[4].push_back({5,50});
+	adj[5].push_back({4,50});
 
 
-    //first intialize zero index
-    parent[0] = -1;
-    weight[0]=0;
-    pq.push({0,0});
+	
 
-    while(!pq.empty()){
-        int u= pq.top().second; // checking the minimum index using min heap or prioroity queue
-        pq.pop();
-
-        visited[u] = true;
-        for(auto it : adj[u]){
-            int v = it.first;;
-            int wt = it.second;
-            if(visited[v] == false && wt < weight[v]){
-                weight[v] = wt;
-                parent[v] = u;
-                pq.push({weight[v] , v}); 
-
-            }
-
-        }
-    }
-    for(int i = 1; i < vertex ; i++){
-        cout<<parent[i]<<" "<<i<<endl;
-         
-    }
+	// adj[0].push_back({1,2});
+	// adj[0].push_back({3,6});
+	// adj[1].push_back({0,2});
+	// adj[1].push_back({2,3});
+	// adj[1].push_back({3,8});
+	// adj[1].push_back({4,5});
+	// adj[2].push_back({1,3});
+	// adj[2].push_back({4,7});
+	// adj[3].push_back({0,6});
+	// adj[3].push_back({1,8});
+	// adj[4].push_back({1,5});
+	// adj[4].push_back({2,7});
 
 
-
-     return 0;
-}
-
-   
+	
+	
+    int parent[N]; 
+      
+    int key[N]; 
+      
+    bool mstSet[N]; 
+  
+    for (int i = 0; i < N; i++) 
+        key[i] = INT_MAX, mstSet[i] = false; 
     
+    priority_queue< pair<int,int>, vector <pair<int,int>> , greater<pair<int,int>> > pq;
+
+    key[0] = 0; 
+    parent[0] = -1; 
+    pq.push({0, 0});
+
+    while(!pq.empty())
+    { 
+        int u = pq.top().second; 
+        pq.pop(); 
+        
+        mstSet[u] = true; 
+        
+        for (auto it : adj[u]) {
+            int v = it.first;
+            int weight = it.second;
+            if (mstSet[v] == false && weight < key[v]) {
+                parent[v] = u;
+	    key[v] = weight; 
+                pq.push({key[v], v});    
+            }
+        }
+            
+    } 
+    
+    for (int i = 1; i < N; i++) 
+        cout << parent[i] << " - " << i <<" \n"; 
+	return 0;
+}
