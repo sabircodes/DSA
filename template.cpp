@@ -56,32 +56,32 @@
 //     return 0;
 // }
 
-// #include<iostream>
-// #include<cmath>
-// using namespace std;
-// template<class T1 , class T2>
-// class calculate{
-//     public:
-//         T1 num1 ;
-//         T2 num2 ;
-//         calculate(T1 v1, T2 v2){
-//             num1 = v1;
-//             num2 = v2;
-//         }
+#include<iostream>
+#include<cmath>
+using namespace std;
+template<class T1 , class T2>
+class calculate{
+    public:
+        T1 num1 ;
+        T2 num2 ;
+        calculate(T1 v1, T2 v2){
+            num1 = v1;
+            num2 = v2;
+        }
 
-//         void answer(){
-//             cout<<"The product of two number is : "<<num1*num2<<endl;
-//             cout<<"The sum of two number is: "<<num1+num2<<endl;
-//             cout<<"The sin of "<<num1<<" is: "<<sin(num1)<<endl;
-//             cout<<"The cos of "<<num2<<" is: "<<cos(num2);
+        void answer(){
+            cout<<"The product of two number is : "<<num1*num2<<endl;
+            cout<<"The sum of two number is: "<<num1+num2<<endl;
+            cout<<"The sin of "<<num1<<" is: "<<sin(num1)<<endl;
+            cout<<"The cos of "<<num2<<" is: "<<cos(num2);
 
 
-//         }
-// };
+        }
+};
 
-// int main(){
-//     calculate <int , float> c1(2,5.2);
-//     c1.answer();
-//     return 0;
-// }
+int main(){
+    calculate <int , float> c1(2,5.2);
+    c1.answer();
+    return 0;
+}
 

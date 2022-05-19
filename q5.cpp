@@ -1,46 +1,29 @@
 #include<iostream>
-
+#include<stack>
 using namespace std;
 
-int main()
-{
- int n,x=0,i,ch,one=0,two=0,three=0,four=0,five=0;
- cout<<"Enter total num of students: "<<endl;
- cin>>n;
- 
- for(i=0;i<n;i++)
- {
-  cout<<"Enter votes for \n1 \n2 \n3 \n4 \n5\nEnter vote for :";
-  cin>>ch;
-  
-  switch(ch)
-  {
-   case 1:one++;
-   break;
-   
-   case 2:two++;
-   break;
-   
-   case 3:three++;
-   break;
-   
-   case 4:four++;
-   break;
-   
-   case 5:five++;
-   break;
-   
-   default:x++;
-  }
-  
- }
- 
- 
- cout<<"\nvotes given to person 1 is:"<<one<<endl;
- cout<<"\nvotes given to person 2 is:"<<two<<endl;
- cout<<"\nvotes given to person 3 is:"<<three<<endl;
- cout<<"\nvotes given to person 4 is:"<<four<<endl;
- cout<<"\nspoiled vote are:"<<x;
- 
- return 0;
+
+int main(){
+    string s;
+    cout<<"enter: "<<endl;
+    cin>>s;
+    int n = s.length();
+    stack<char>st ; // creating a stack of size string
+    for(int i = 0 ; i< n ; i++){
+        st.push(s[i]);
+    } 
+     string reverse = "";
+
+    while(!st.empty()){
+        reverse+=st.top();
+        st.pop();
+    }
+
+    if(s==reverse){
+        cout<<"It is a palindrome !";
+    }
+    else{
+        cout<<"It is  Not a palindrome"<<endl;
+    }
+     return 0;
 }
